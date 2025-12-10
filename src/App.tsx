@@ -47,7 +47,7 @@ const App: React.FC = () => {
         {/* 1. ESSENTIALS (Individual) - The Texture Moodboard Layout */}
         <section
           id="individuais"
-          className="pt-16 pb-32 relative overflow-hidden bg-champagne-100 dark:bg-midnight-900 transition-colors duration-700"
+          className="pt-16 pb-12 relative overflow-hidden bg-champagne-100 dark:bg-midnight-900 transition-colors duration-700"
         >
           {/* Decorative Background Blur */}
           <div className="absolute top-20 left-10 w-64 h-64 bg-champagne-500/10 dark:bg-champagne-500/5 rounded-full blur-[100px] pointer-events-none"></div>
@@ -104,7 +104,7 @@ const App: React.FC = () => {
         {/* 2. THERAPEUTIC - The Altar Composition Layout */}
         <section
           id="terapeutico"
-          className="relative pt-16 pb-40 overflow-hidden bg-champagne-50 dark:bg-midnight-800 transition-colors duration-700"
+          className="relative pt-16 pb-12 overflow-hidden bg-champagne-50 dark:bg-midnight-800 transition-colors duration-700"
         >
           <div className="relative z-10 max-w-[90rem] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
             {/* LEFT: Image "Altar" Composition */}
@@ -193,7 +193,7 @@ const App: React.FC = () => {
         {/* 3. FACIAL - GLOW (Clean, Clinical but luxe) */}
         <section
           id="facial"
-          className="pt-16 pb-32 bg-champagne-100 dark:bg-midnight-900 transition-colors duration-700"
+          className="pt-16 pb-12 bg-champagne-100 dark:bg-midnight-900 transition-colors duration-700"
         >
           <div className="max-w-[90rem] mx-auto px-6 md:px-12">
             <div className="flex flex-col items-center text-center">
@@ -267,10 +267,10 @@ const App: React.FC = () => {
         {/* 4. BODY - SENSORIAL (Massage) */}
         <section
           id="corporais"
-          className="pt-16 pb-32 bg-champagne-50 dark:bg-midnight-800 transition-colors duration-700"
+          className="pt-16 pb-12 bg-champagne-50 dark:bg-midnight-800 transition-colors duration-700"
         >
           <div className="max-w-[90rem] mx-auto px-6 md:px-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 items-center">
               <div>
                 <SectionHeader
                   title={BODY_PACKAGES.title}
@@ -338,7 +338,7 @@ const App: React.FC = () => {
         {/* 5. RITUALS (Packages) - The Silk Texture Backdrop */}
         <section
           id="especiais"
-          className="pt-16 pb-40 relative bg-champagne-100 dark:bg-midnight-900 transition-colors duration-700"
+          className="pt-16 pb-12 relative bg-champagne-100 dark:bg-midnight-900 transition-colors duration-700"
         >
           <div
             className="absolute inset-0 bg-cover opacity-20 dark:opacity-8 mix-blend-multiply dark:mix-blend-overlay fixed-attachment transition-all duration-700"
@@ -362,7 +362,7 @@ const App: React.FC = () => {
         {/* 6. ABOUT (Sobre Mim) - Personal Story Section */}
         <section
           id="sobre"
-          className="pt-16 pb-40 relative overflow-hidden bg-champagne-50 dark:bg-midnight-800 transition-colors duration-700"
+          className="pt-16 pb-12 relative overflow-hidden bg-champagne-50 dark:bg-midnight-800 transition-colors duration-700"
         >
           {/* Decorative Background Blur */}
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-champagne-500/10 dark:bg-champagne-500/5 rounded-full blur-[120px] pointer-events-none"></div>
