@@ -3,7 +3,15 @@ import { Instagram, MessageCircle } from "lucide-react";
 import BrandLogo from "./BrandLogo";
 import { getWhatsAppLink, getWhatsAppMessages } from "../utils";
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigateToPrivacy?: () => void;
+  onNavigateToTerms?: () => void;
+}
+
+const Footer: React.FC<FooterProps> = ({
+  onNavigateToPrivacy,
+  onNavigateToTerms,
+}) => {
   return (
     <footer
       className="bg-champagne-100 dark:bg-midnight-900 text-midnight-950 dark:text-champagne-100 pt-32 pb-12 border-t border-midnight-950/5 dark:border-white/5 transition-colors duration-700"
@@ -62,25 +70,54 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="border-t border-midnight-950/5 dark:border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="opacity-60">
-            <BrandLogo scrolled={false} />
-          </div>
-          <div className="flex flex-col items-center md:items-end gap-2">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-midnight-950/30 dark:text-white/30">
-              © {new Date().getFullYear()} Todos os direitos reservados.
-            </p>
-            <p className="text-[10px] text-midnight-950/30 dark:text-white/30">
-              Feito com <span className="text-red-500">♥</span> por{" "}
+        <div className="border-t border-midnight-950/5 dark:border-white/5 pt-12">
+          <div className="flex flex-wrap justify-center items-center gap-x-2 gap-y-1 text-[10px] text-midnight-950/40 dark:text-white/40">
+            <span className="whitespace-nowrap">
+              © {new Date().getFullYear()}, Lays Sonego. Todos os direitos
+              reservados
+            </span>
+            {onNavigateToPrivacy && (
+              <>
+                <span className="text-midnight-950/20 dark:text-white/20 hidden sm:inline">
+                  ·
+                </span>
+                <button
+                  onClick={onNavigateToPrivacy}
+                  className="hover:text-champagne-600 dark:hover:text-champagne-400 transition-colors whitespace-nowrap"
+                >
+                  Política de Privacidade
+                </button>
+              </>
+            )}
+            {onNavigateToTerms && (
+              <>
+                <span className="text-midnight-950/20 dark:text-white/20">
+                  ·
+                </span>
+                <button
+                  onClick={onNavigateToTerms}
+                  className="hover:text-champagne-600 dark:hover:text-champagne-400 transition-colors whitespace-nowrap"
+                >
+                  Termos de Uso
+                </button>
+              </>
+            )}
+            <span className="text-midnight-950/20 dark:text-white/20">·</span>
+            <span className="group inline-flex items-center gap-1 whitespace-nowrap">
+              Feito com{" "}
+              <span className="inline-block text-red-500 group-hover:animate-pulse">
+                ♥
+              </span>{" "}
+              por{" "}
               <a
                 href="https://arielprovasi.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-champagne-500 transition-colors underline"
+                className="hover:text-champagne-600 dark:hover:text-champagne-400 transition-colors underline decoration-midnight-950/20 dark:decoration-white/20 hover:decoration-champagne-600 dark:hover:decoration-champagne-400"
               >
                 Ariel
               </a>
-            </p>
+            </span>
           </div>
         </div>
       </div>
