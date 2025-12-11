@@ -7,8 +7,16 @@ const Hero: React.FC = () => {
   const signatureName = "Lays Sonego";
   const signatureTitle = "Esteticista & Terapeuta";
 
+  const scrollToAbout = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const aboutSection = document.getElementById("sobre");
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
-    <section className="relative h-screen flex items-center bg-champagne-50 dark:bg-midnight-950 overflow-hidden transition-colors duration-700 w-full">
+    <section className="relative h-screen flex items-center bg-sky-50 dark:bg-slate-950 overflow-hidden transition-colors duration-700 w-full">
       {/* Background Silk Texture (Parallax feel) */}
       <div
         className="absolute inset-0 opacity-30 dark:opacity-20 bg-cover bg-center mix-blend-multiply dark:mix-blend-screen animate-pulse"
@@ -49,9 +57,13 @@ const Hero: React.FC = () => {
               Um santuário onde a estética avançada encontra rituais
               terapêuticos. Descubra a sua versão mais radiante, guiada pela
               essência de{" "}
-              <span className="text-champagne-700 dark:text-champagne-300 font-medium">
+              <a
+                href="#sobre"
+                onClick={scrollToAbout}
+                className="text-champagne-700 dark:text-champagne-300 font-medium hover:text-champagne-800 dark:hover:text-champagne-200 transition-all duration-300 cursor-pointer"
+              >
                 {signatureName}
-              </span>
+              </a>
               .
             </p>
             <div className="mt-8 flex justify-center md:justify-start">
@@ -72,14 +84,18 @@ const Hero: React.FC = () => {
           <div className="absolute top-10 right-10 w-[80%] h-[90%] border border-champagne-600/20 dark:border-champagne-500/20 rounded-t-[10rem] animate-float transition-colors duration-700"></div>
 
           {/* Floating Signature - Mobile */}
-          <div className="absolute -top-4 right-4 z-30 bg-gradient-to-br from-white/80 via-white/60 to-white/40 dark:from-black/40 dark:via-black/30 dark:to-black/20 backdrop-blur-xl px-4 py-2 border border-white/40 dark:border-white/20 rounded-sm shadow-[0_8px_32px_0_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.1)] transform rotate-2 block md:hidden">
+          <a
+            href="#sobre"
+            onClick={scrollToAbout}
+            className="absolute -top-4 right-4 z-30 bg-gradient-to-br from-white/80 via-white/60 to-white/40 dark:from-black/40 dark:via-black/30 dark:to-black/20 backdrop-blur-xl px-4 py-2 border border-white/40 dark:border-white/20 rounded-sm shadow-[0_8px_32px_0_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.1)] transform rotate-2 block md:hidden hover:scale-105 hover:rotate-3 transition-all duration-300 cursor-pointer"
+          >
             <span className="block font-display font-bold text-xl text-midnight-950 dark:text-white transition-colors duration-700 drop-shadow-sm">
               {signatureName}
             </span>
             <span className="text-[8px] uppercase tracking-widest text-midnight-900 dark:text-champagne-200 transition-colors duration-700 block text-right drop-shadow-sm">
               {signatureTitle}
             </span>
-          </div>
+          </a>
 
           {/* Image Mask/Container */}
           <div className="relative w-full h-full overflow-hidden rounded-t-[10rem] md:rounded-t-none md:rounded-tl-[12rem] md:rounded-br-[5rem]">
@@ -95,14 +111,18 @@ const Hero: React.FC = () => {
             />
 
             {/* Floating Signature - Desktop */}
-            <div className="absolute bottom-8 left-8 z-30 bg-gradient-to-br from-white/80 via-white/60 to-white/40 dark:from-black/40 dark:via-black/30 dark:to-black/20 backdrop-blur-xl px-6 py-4 border border-white/40 dark:border-white/20 rounded-sm shadow-[0_8px_32px_0_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.1)] hidden md:block">
+            <a
+              href="#sobre"
+              onClick={scrollToAbout}
+              className="absolute bottom-8 left-8 z-30 bg-gradient-to-br from-white/80 via-white/60 to-white/40 dark:from-black/40 dark:via-black/30 dark:to-black/20 backdrop-blur-xl px-6 py-4 border border-white/40 dark:border-white/20 rounded-sm shadow-[0_8px_32px_0_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.1)] hidden md:block hover:scale-105 hover:shadow-[0_12px_40px_0_rgba(0,0,0,0.15),0_0_0_1px_rgba(255,255,255,0.3)] dark:hover:shadow-[0_12px_40px_0_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.15)] transition-all duration-300 cursor-pointer"
+            >
               <span className="block font-display font-bold text-2xl text-midnight-950 dark:text-white transition-colors duration-700 drop-shadow-sm">
                 {signatureName}
               </span>
               <span className="text-[10px] uppercase tracking-widest text-midnight-900 dark:text-champagne-200 transition-colors duration-700 block text-left drop-shadow-sm">
                 {signatureTitle}
               </span>
-            </div>
+            </a>
           </div>
         </div>
       </div>
