@@ -29,6 +29,14 @@
                 800: "#5D4A2F",
                 900: "#4A3B22", // Dark gold for text in light mode
               },
+              sky: {
+                50: "#f5feff", // Pastel blue
+                950: "#082f49", // Dark sky blue
+              },
+              slate: {
+                900: "#0a0d14", // Black with subtle blue tint
+                950: "#0a0d14",
+              },
             },
             fontFamily: {
               serif: ["Cormorant Garamond", "serif"],
@@ -46,6 +54,7 @@
               "slow-spin": "spin 20s linear infinite",
               reveal: "reveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards",
               slideIn: "slideIn 0.3s ease-out both",
+              pulse: "pulse 1.5s ease-in-out infinite",
             },
             keyframes: {
               float: {
@@ -59,6 +68,10 @@
               slideIn: {
                 "0%": { opacity: "0", transform: "translateX(-8px)" },
                 "100%": { opacity: "1", transform: "translateX(0)" },
+              },
+              pulse: {
+                "0%, 100%": { transform: "scale(1)" },
+                "50%": { transform: "scale(1.2)" },
               },
             },
           },
