@@ -5,6 +5,9 @@ import SectionHeader from "./components/SectionHeader";
 import ServiceCard from "./components/ServiceCard";
 import PackageCard from "./components/PackageCard";
 import Footer from "./components/Footer";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import TermsOfUse from "./components/TermsOfUse";
+import ScrollToTop from "./components/ScrollToTop";
 import {
   INDIVIDUAL_SERVICES,
   THERAPEUTIC_SERVICES,
@@ -23,8 +26,11 @@ import {
 import { getWhatsAppLink, getWhatsAppMessages } from "./utils";
 import { MessageCircle } from "lucide-react";
 
+type Page = "home" | "privacy" | "terms";
+
 const App: React.FC = () => {
   const [isDark, setIsDark] = useState(true);
+  const [currentPage, setCurrentPage] = useState<Page>("home");
 
   useEffect(() => {
     const html = document.documentElement;
@@ -35,10 +41,56 @@ const App: React.FC = () => {
     }
   }, [isDark]);
 
+  useEffect(() => {
+    // Handle browser back/forward buttons
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash === "#privacidade") {
+        setCurrentPage("privacy");
+      } else if (hash === "#termos") {
+        setCurrentPage("terms");
+      } else {
+        setCurrentPage("home");
+      }
+    };
+
+    handleHashChange();
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
   const toggleTheme = () => setIsDark(!isDark);
 
+  const handleNavigateToPrivacy = () => {
+    setCurrentPage("privacy");
+    window.location.hash = "privacidade";
+    window.scrollTo(0, 0);
+  };
+
+  const handleNavigateToTerms = () => {
+    setCurrentPage("terms");
+    window.location.hash = "termos";
+    window.scrollTo(0, 0);
+  };
+
+  const handleBackToHome = () => {
+    setCurrentPage("home");
+    window.location.hash = "";
+    window.scrollTo(0, 0);
+  };
+
+  // Render legal pages
+  if (currentPage === "privacy") {
+    return <PrivacyPolicy onBack={handleBackToHome} isDark={isDark} />;
+  }
+
+  if (currentPage === "terms") {
+    return <TermsOfUse onBack={handleBackToHome} isDark={isDark} />;
+  }
+
+  // Render home page
   return (
-    <div className="bg-champagne-50 dark:bg-midnight-950 min-h-screen text-midnight-950 dark:text-champagne-100 font-sans selection:bg-champagne-500 selection:text-black transition-colors duration-700 overflow-x-hidden max-w-full">
+    <div className="bg-sky-50 dark:bg-sky-950 min-h-screen text-midnight-950 dark:text-champagne-100 font-sans selection:bg-champagne-500 selection:text-black transition-colors duration-700 overflow-x-hidden max-w-full">
       <Navigation toggleTheme={toggleTheme} isDark={isDark} />
 
       <main>
@@ -47,7 +99,7 @@ const App: React.FC = () => {
         {/* 1. ESSENTIALS (Individual) - The Texture Moodboard Layout */}
         <section
           id="individuais"
-          className="pt-16 pb-12 relative overflow-hidden bg-champagne-100 dark:bg-midnight-900 transition-colors duration-700"
+          className="pt-24 pb-12 relative overflow-hidden bg-sky-50 dark:bg-slate-950 transition-colors duration-700"
         >
           {/* Decorative Background Blur */}
           <div className="absolute top-20 left-10 w-64 h-64 bg-champagne-500/10 dark:bg-champagne-500/5 rounded-full blur-[100px] pointer-events-none"></div>
@@ -104,7 +156,7 @@ const App: React.FC = () => {
         {/* 2. THERAPEUTIC - The Altar Composition Layout */}
         <section
           id="terapeutico"
-          className="relative pt-16 pb-12 overflow-hidden bg-champagne-50 dark:bg-midnight-800 transition-colors duration-700"
+          className="relative pt-24 pb-12 overflow-hidden bg-champagne-50 dark:bg-midnight-800 transition-colors duration-700"
         >
           <div className="relative z-10 max-w-[90rem] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
             {/* LEFT: Image "Altar" Composition */}
@@ -193,7 +245,7 @@ const App: React.FC = () => {
         {/* 3. FACIAL - GLOW (Clean, Clinical but luxe) */}
         <section
           id="facial"
-          className="pt-16 pb-12 bg-champagne-100 dark:bg-midnight-900 transition-colors duration-700"
+          className="pt-24 pb-12 bg-sky-50 dark:bg-slate-950 transition-colors duration-700"
         >
           <div className="max-w-[90rem] mx-auto px-6 md:px-12">
             <div className="flex flex-col items-center text-center">
@@ -204,7 +256,7 @@ const App: React.FC = () => {
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-12">
               {/* Image Left */}
               <div className="md:col-span-1 h-[600px] overflow-hidden relative group">
                 <img
@@ -267,7 +319,7 @@ const App: React.FC = () => {
         {/* 4. BODY - SENSORIAL (Massage) */}
         <section
           id="corporais"
-          className="pt-16 pb-12 bg-champagne-50 dark:bg-midnight-800 transition-colors duration-700"
+          className="pt-24 pb-12 bg-champagne-50 dark:bg-midnight-800 transition-colors duration-700"
         >
           <div className="max-w-[90rem] mx-auto px-6 md:px-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2 items-center">
@@ -338,7 +390,7 @@ const App: React.FC = () => {
         {/* 5. RITUALS (Packages) - The Silk Texture Backdrop */}
         <section
           id="especiais"
-          className="pt-16 pb-12 relative bg-champagne-100 dark:bg-midnight-900 transition-colors duration-700"
+          className="pt-24 pb-12 relative bg-sky-50 dark:bg-slate-950 transition-colors duration-700"
         >
           <div
             className="absolute inset-0 bg-cover opacity-20 dark:opacity-8 mix-blend-multiply dark:mix-blend-overlay fixed-attachment transition-all duration-700"
@@ -351,7 +403,7 @@ const App: React.FC = () => {
               subtitle="Experiências desenhadas para momentos únicos."
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
               {SPECIAL_PACKAGES.map((pkg) => (
                 <PackageCard key={pkg.id} item={pkg} />
               ))}
@@ -362,7 +414,7 @@ const App: React.FC = () => {
         {/* 6. ABOUT (Sobre Mim) - Personal Story Section */}
         <section
           id="sobre"
-          className="pt-16 pb-12 relative overflow-hidden bg-champagne-50 dark:bg-midnight-800 transition-colors duration-700"
+          className="pt-24 pb-12 relative overflow-hidden bg-champagne-50 dark:bg-midnight-800 transition-colors duration-700"
         >
           {/* Decorative Background Blur */}
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-champagne-500/10 dark:bg-champagne-500/5 rounded-full blur-[120px] pointer-events-none"></div>
@@ -446,7 +498,12 @@ const App: React.FC = () => {
         </section>
       </main>
 
-      <Footer />
+      <Footer
+        onNavigateToPrivacy={handleNavigateToPrivacy}
+        onNavigateToTerms={handleNavigateToTerms}
+      />
+
+      <ScrollToTop />
     </div>
   );
 };
