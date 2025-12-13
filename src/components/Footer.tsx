@@ -71,39 +71,44 @@ const Footer: React.FC<FooterProps> = ({
         </div>
 
         <div className="border-t border-midnight-950/5 dark:border-white/5 pt-12">
-          <div className="flex flex-wrap justify-center items-center gap-x-2 gap-y-1 text-[10px] text-midnight-950/40 dark:text-white/40">
-            <span className="whitespace-nowrap">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-0 text-[10px] text-midnight-950/40 dark:text-white/40">
+            {/* Copyright - Left aligned on desktop */}
+            <span className="whitespace-nowrap text-center md:text-left">
               © {new Date().getFullYear()}, Lays Sonego. Todos os direitos
               reservados
             </span>
-            {onNavigateToPrivacy && (
-              <>
-                <span className="text-midnight-950/20 dark:text-white/20 hidden sm:inline">
-                  ·
-                </span>
-                <button
-                  onClick={onNavigateToPrivacy}
-                  className="hover:text-champagne-600 dark:hover:text-champagne-400 transition-colors whitespace-nowrap"
-                >
-                  Política de Privacidade
-                </button>
-              </>
-            )}
-            {onNavigateToTerms && (
-              <>
-                <span className="text-midnight-950/20 dark:text-white/20">
-                  ·
-                </span>
-                <button
-                  onClick={onNavigateToTerms}
-                  className="hover:text-champagne-600 dark:hover:text-champagne-400 transition-colors whitespace-nowrap"
-                >
-                  Termos de Uso
-                </button>
-              </>
-            )}
-            <span className="text-midnight-950/20 dark:text-white/20">·</span>
-            <span className="group inline-flex items-center gap-1 whitespace-nowrap">
+            
+            {/* Privacy & Terms - Center on desktop */}
+            <div className="flex flex-wrap justify-center items-center gap-x-2 gap-y-1">
+              {onNavigateToPrivacy && (
+                <>
+                  <button
+                    onClick={onNavigateToPrivacy}
+                    className="hover:text-champagne-600 dark:hover:text-champagne-400 transition-colors whitespace-nowrap"
+                  >
+                    Política de Privacidade
+                  </button>
+                </>
+              )}
+              {onNavigateToTerms && (
+                <>
+                  {onNavigateToPrivacy && (
+                    <span className="text-midnight-950/20 dark:text-white/20">
+                      ·
+                    </span>
+                  )}
+                  <button
+                    onClick={onNavigateToTerms}
+                    className="hover:text-champagne-600 dark:hover:text-champagne-400 transition-colors whitespace-nowrap"
+                  >
+                    Termos de Uso
+                  </button>
+                </>
+              )}
+            </div>
+            
+            {/* Made with love - Right aligned on desktop */}
+            <span className="group inline-flex items-center gap-1 whitespace-nowrap text-center md:text-right justify-center md:justify-end">
               Feito com{" "}
               <span className="inline-block text-red-500 group-hover:animate-pulse">
                 ♥
