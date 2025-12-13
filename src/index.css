@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+html,
+body {
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Italiana", serif;
+}
+
+.font-script {
+  font-family: "Pinyon Script", cursive;
+}
+
+.font-gloock {
+  font-family: "Gloock", serif;
+}
+
+/* Smooth scrolling & luxury selection */
+::selection {
+  background: #c19d6c;
+  color: #050505;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 3px;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+/* Dropdown slide-in animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
