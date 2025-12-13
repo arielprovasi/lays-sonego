@@ -107,7 +107,7 @@ const Hero: React.FC = () => {
               alt={`Retrato de ${signatureName}, ${signatureTitle}`}
               width={800}
               height={1200}
-              className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-[2s] ease-out"
+              className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-[2s] ease-out"
             />
 
             {/* Floating Signature - Desktop */}

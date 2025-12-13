@@ -1,19 +1,19 @@
 import { SectionData, PackageItem } from "./types";
-import packageFlutua from "./assets/images/package-flutua.jpg";
-import packageNoiva from "./assets/images/package-noiva.jpg";
-import packageAniversario from "./assets/images/package-aniversario.jpg";
-import packageSublime from "./assets/images/package-sublime.jpg";
-import laysImage from "./assets/images/lays.png";
-import laysImageJpg from "./assets/images/lays.jpg";
-import massagemImage from "./assets/images/massagem.jpg";
-import serviceOracular from "./assets/images/service-oracular.jpg";
-import serviceSpaFacial from "./assets/images/service-spa-facial.jpg";
-import serviceLimpeza from "./assets/images/service-limpeza.jpg";
-import serviceMassagem from "./assets/images/service-massagem.jpg";
+import packageFlutua from "./assets/images/package-flutua.webp";
+import packageNoiva from "./assets/images/package-noiva.webp";
+import packageAniversario from "./assets/images/package-aniversario.webp";
+import packageSublime from "./assets/images/package-sublime.webp";
+import laysImageHero from "./assets/images/lays_1.webp";
+import laysImage from "./assets/images/lays.webp";
+import massagemImage from "./assets/images/massagem.webp";
+import serviceOracular from "./assets/images/service-oracular.webp";
+import serviceSpaFacial from "./assets/images/service-spa-facial.webp";
+import serviceLimpeza from "./assets/images/service-limpeza.webp";
+import serviceMassagem from "./assets/images/service-massagem.webp";
 
 // Local images - using imports for better bundling and optimization
-export const HERO_IMAGE = laysImage;
-export const LAYS_IMAGE = laysImageJpg; // Image for "Sobre Mim" section
+export const HERO_IMAGE = laysImageHero;
+export const LAYS_IMAGE = laysImage; // Image for "Sobre Mim" section
 export const MASSAGE_IMAGE = massagemImage;
 export const TAROT_IMAGE = serviceOracular; // Using oracular service image for tarot section
 export const FACIAL_IMAGE = serviceSpaFacial;
