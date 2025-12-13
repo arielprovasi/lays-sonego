@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
 import SectionHeader from "./components/SectionHeader";
 import ServiceCard from "./components/ServiceCard";
 import PackageCard from "./components/PackageCard";
 import Footer from "./components/Footer";
-import PrivacyPolicy from "./components/PrivacyPolicy";
-import TermsOfUse from "./components/TermsOfUse";
 import ScrollToTop from "./components/ScrollToTop";
+
+// Lazy load components that are not immediately needed
+const PrivacyPolicy = lazy(() => import("./components/PrivacyPolicy"));
+const TermsOfUse = lazy(() => import("./components/TermsOfUse"));
 import {
   INDIVIDUAL_SERVICES,
   THERAPEUTIC_SERVICES,
@@ -20,7 +22,6 @@ import {
   CRYSTAL_DETAIL,
   CANDLE_OIL_IMAGE,
   SILK_TEXTURE,
-  HERO_IMAGE,
   LAYS_IMAGE,
 } from "./constants";
 import { getWhatsAppLink, getWhatsAppMessages } from "./utils";
@@ -79,13 +80,29 @@ const App: React.FC = () => {
     window.scrollTo(0, 0);
   };
 
-  // Render legal pages
+  // Render legal pages with Suspense for lazy loading
   if (currentPage === "privacy") {
-    return <PrivacyPolicy onBack={handleBackToHome} isDark={isDark} />;
+    return (
+      <Suspense fallback={
+        <div className="bg-sky-50 dark:bg-sky-950 min-h-screen flex items-center justify-center">
+          <div className="text-champagne-600 dark:text-champagne-400">Carregando...</div>
+        </div>
+      }>
+        <PrivacyPolicy onBack={handleBackToHome} isDark={isDark} />
+      </Suspense>
+    );
   }
 
   if (currentPage === "terms") {
-    return <TermsOfUse onBack={handleBackToHome} isDark={isDark} />;
+    return (
+      <Suspense fallback={
+        <div className="bg-sky-50 dark:bg-sky-950 min-h-screen flex items-center justify-center">
+          <div className="text-champagne-600 dark:text-champagne-400">Carregando...</div>
+        </div>
+      }>
+        <TermsOfUse onBack={handleBackToHome} isDark={isDark} />
+      </Suspense>
+    );
   }
 
   // Render home page
@@ -120,7 +137,7 @@ const App: React.FC = () => {
               </div>
 
               {/* RIGHT: Image Composition (The "Moodboard") */}
-              <div className="lg:col-span-6 xl:col-span-7 relative min-h-[600px] hidden md:block mt-36">
+              <div className="lg:col-span-6 xl:col-span-7 relative min-h-[600px] hidden md:block mt-14">
                 {/* Image 1: Main Texture/Close up (Cream) */}
                 <div className="absolute top-0 right-0 w-3/4 h-[500px] overflow-hidden rounded-sm shadow-2xl shadow-midnight-950/10 dark:shadow-black/20 group z-10">
                   <div className="absolute inset-0 bg-midnight-950/10 dark:bg-black/20 group-hover:opacity-0 transition-opacity duration-700 z-10"></div>
